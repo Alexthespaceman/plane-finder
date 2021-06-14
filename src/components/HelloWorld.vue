@@ -1,23 +1,29 @@
 <template>
   <div class="Header">
     <div>
-      <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
-        <b-dropdown-item>First Action</b-dropdown-item>
-        <b-dropdown-item>Second Action</b-dropdown-item>
-        <b-dropdown-item>Third Action</b-dropdown-item>
+      <b-dropdown id="dropdown-1" text="Explore" class="m-md-2">
+        <b-dropdown-item>You're local Airport flights</b-dropdown-item>
+        <b-dropdown-item>Filter by Aircraft type</b-dropdown-item>
+        <b-dropdown-item>Delays</b-dropdown-item>
         <b-dropdown-divider></b-dropdown-divider>
         <b-dropdown-item active>Active action</b-dropdown-item>
         <b-dropdown-item disabled>Disabled action</b-dropdown-item>
       </b-dropdown>
     </div>
+
     <h1 class="header1">{{ msg }}</h1>
     <p>Helping you find your way around global airtraffic</p>
+    <div class="h2 mb-0">
+      <b-icon icon="arrow-up"></b-icon>
+      <b-icon icon="exclamation-triangle"></b-icon>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Header",
+
   props: {
     msg: String,
   },
