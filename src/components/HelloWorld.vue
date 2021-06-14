@@ -29,7 +29,7 @@ export default {
 <style scoped>
 .Header {
   /* border: 3px black solid; */
-  position: relative;
+  /* position: relative; */
   background-color: #f4d35e;
 }
 
