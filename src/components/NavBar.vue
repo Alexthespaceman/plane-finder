@@ -6,16 +6,20 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-nav-form>
+        <!-- <b-nav-form>
           <b-form-input
+            type="text"
+            v-model="form.text"
             size="sm"
             class="mr-sm-2"
-            placeholder="Search"
+            placeholder="Search Flight Number"
+            :formatter="formatter"
+            id="input-formatter"
           ></b-form-input>
           <b-button size="sm" class="my-2 my-sm-0" type="submit"
-            >Search</b-button
-          >
-        </b-nav-form>
+            >Search
+          </b-button>
+        </b-nav-form> -->
 
         <b-navbar-nav>
           <b-nav-item href="#">Link</b-nav-item>
@@ -42,12 +46,42 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+    <form>
+      <p>Search for a Flight:</p>
+      <input placeholder="Search flight number" type="text" />
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "Nav",
+  data() {
+    return {
+      contents: null,
+      form: {
+        text: "",
+      },
+    };
+  },
+  method: {
+    formatter(value) {
+      return value;
+    },
+  },
+  mounted() {
+    console.log(this.value);
+    axios
+      .get(
+        `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
+      )
+      .then((response) => {
+        this.info = response;
+        console.log(response);
+      });
+  },
 };
 </script>
 

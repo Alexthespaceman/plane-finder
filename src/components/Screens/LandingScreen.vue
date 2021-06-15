@@ -36,7 +36,7 @@ export default {
       .then((response) => {
         this.contents = response.data.data;
 
-        console.log(response.data.data);
+        // console.log(response.data.data);
       });
   },
 };
