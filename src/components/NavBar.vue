@@ -8,7 +8,7 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Link</b-nav-item>
+          <b-link to="LandingScreen">Search Airlines</b-link>
           <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
         </b-navbar-nav>
 
@@ -85,7 +85,7 @@ export default {
       )
       .then((response) => {
         this.contents = response.data.data;
-        // console.log(response);
+        console.log(response.data.data);
       });
   },
 };
