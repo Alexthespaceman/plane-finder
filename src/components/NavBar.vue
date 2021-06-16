@@ -46,9 +46,9 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <form>
+    <form @submit="getData">
       <p>Search for a Flight:</p>
-      <input placeholder="Search flight number" type="text" />
+      <input v-model="form.text" placeholder="Search flight number" type="text" class="input" name="form.text" />
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -66,13 +66,14 @@ export default {
       },
     };
   },
-  method: {
-    formatter(value) {
-      return value;
-    },
+  methods: {
+  getData(e){
+    e.preventDefault()
+    console.log(this.form.text)
+  }
   },
   mounted() {
-    console.log(this.value);
+    console.log(this.form.text);
     axios
       .get(
         `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
