@@ -4,14 +4,17 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Vue from "vue";
 import App from "./App.vue";
+import Router from './Router/index';
 
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+Vue.use(Router);
 
 Vue.config.productionTip = false;
 
 new Vue({
   render: (h) => h(App),
+  Router,
 }).$mount("#app");
