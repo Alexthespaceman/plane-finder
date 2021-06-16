@@ -2,19 +2,22 @@
   <div class="container">
     <h1 class="title">Todays top 10 flights</h1>
 
-    <vue-modaltor :visible="open" @hideModal="hideModal">
+    <vue-modaltor
+      v-for="content in contents"
+      :key="content.id"
+      :visible="open"
+      @hideModal="hideModal"
+    >
       <template #body>
         <p>
-          “Never forget what you are, for surely the world will not. Make it
-          your strength. Then it can never be your weakness. Armour yourself in
-          it, and it will never be used to hurt you. ” ― George R.R. Martin, A
-          Game of Thrones.
+          This flight is operating in the
+          {{ content.arrival.timezone }}time Zone.
         </p>
       </template>
     </vue-modaltor>
 
     <li class="list" v-for="content in contents" :key="content.id">
-      <button @click="open = true">
+      <button class="border" @click="open = true">
         <!-- <div>{{ content.aircraft }}</div> -->
         <div>{{ content.airline.name }}</div>
         <div>Departed from {{ content.departure.airport }}</div>
@@ -55,7 +58,7 @@ export default {
       .then((response) => {
         this.contents = response.data.data;
 
-        // console.log(response.data.data);
+        console.log(response.data.data);
       });
   },
 };
@@ -87,6 +90,19 @@ export default {
 }
 
 .list:hover {
+  background-color: #f4d35e;
+  transition: 0.5s;
+}
+
+#body {
+  color: snow;
+}
+
+.border {
+  border: none;
+  background-color: white;
+}
+.border:hover {
   background-color: #f4d35e;
   transition: 0.5s;
 }
