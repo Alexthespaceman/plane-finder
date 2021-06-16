@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Todays top 10 flights</h1>
+    <h1>I am Landing Screen - Todays top 10 flights</h1>
 
     <li v-for="content in contents" :key="content.id">
       <!-- <div>{{ content.aircraft }}</div> -->
