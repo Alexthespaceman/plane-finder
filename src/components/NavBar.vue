@@ -8,8 +8,12 @@
 
         <b-collapse id="nav-collapse" is-nav>
           <nav>
-            <router-link class="nav-item" to="/Airlines"> Search Airlines</router-link>
-            <router-link class="nav-item" to="/random"> Search random</router-link>
+            <router-link class="nav-item" to="/Airlines">
+              Search Airlines</router-link
+            >
+            <router-link class="nav-item" to="/random">
+              Search random</router-link
+            >
           </nav>
 
           <!-- Right aligned nav items -->
@@ -34,7 +38,13 @@
       </b-navbar>
       <form @submit="getData">
         <p>Search for a Flight:</p>
-        <input v-model="form.text" placeholder="Search flight number" type="text" class="input" name="form.text" />
+        <input
+          v-model="form.text"
+          placeholder="Search flight number"
+          type="text"
+          class="input"
+          name="form.text"
+        />
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -42,44 +52,44 @@
 </template>
 
 <script>
-  import axios from "axios";
+import axios from "axios";
 
-  import Airlines from '../components/Screens/Airlines.vue'
-  import LandingScreen from '../components/Screens/LandingScreen.vue'
-  import random from '../components/Screens/random.vue'
+import Airlines from "./Screens/Airlines.vue";
+import LandingScreen from "../components/Screens/LandingScreen.vue";
+import random from "../components/Screens/random.vue";
 
-  export default {
-    name: "Nav",
-    data() {
-      return {
-        contents: null,
-        form: {
-          text: "",
-        },
-      };
-    },
-    methods: {
-      getData(e) {
-        e.preventDefault()
-        console.log(this.form.text)
-      }
-    },
-    mounted() {
+export default {
+  name: "Nav",
+  data() {
+    return {
+      contents: null,
+      form: {
+        text: "",
+      },
+    };
+  },
+  methods: {
+    getData(e) {
+      e.preventDefault();
       console.log(this.form.text);
-      axios
-        .get(
-          `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
-        )
-        .then((response) => {
-          this.contents = response.data.data;
-          console.log(response.data.data);
-        });
     },
-  };
+  },
+  mounted() {
+    console.log(this.form.text);
+    axios
+      .get(
+        `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
+      )
+      .then((response) => {
+        this.contents = response.data.data;
+        console.log(response.data.data);
+      });
+  },
+};
 </script>
 
 <style scope>
-  .Nav {
-    text-align: center;
-  }
+.Nav {
+  text-align: center;
+}
 </style>

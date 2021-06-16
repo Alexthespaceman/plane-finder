@@ -1,24 +1,24 @@
 <template>
   <div id="app">
-    
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-    <Header msg="Welcome to Plane finder"/>
-    <router-view><LandingScreen/><Airlines/><random/></router-view>
+    <Header msg="Welcome to Plane finder" />
+    <router-view><LandingScreen /><Airlines /><random /></router-view>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import LandingScreen from "./components/Screens/LandingScreen.vue";
-import Airlines from './components/Screens/Airlines.vue'
-import random from './components/Screens/Airlines.vue'
+import Airlines from "./components/Screens/Airlines.vue";
+import random from "./components/Screens/random.vue";
 
 export default {
   name: "App",
   components: {
     Header,
     LandingScreen,
-    Airlines
+    Airlines,
+    random,
   },
 };
 </script>

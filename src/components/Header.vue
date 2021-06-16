@@ -1,5 +1,8 @@
 <template>
   <div class="Header">
+    <router-link to="/">
+      <button class="logo">Logo</button>
+    </router-link>
     <h1 class="header1">{{ msg }}</h1>
     <p>Helping you find your way around global airtraffic</p>
     <!-- <div class="h2 mb-0">
@@ -52,5 +55,17 @@ a {
   position: absolute;
   left: 50px;
   top: 20%;
+}
+</style>
+
+<style>
+.logo {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  border: 3px black solid;
+  border-radius: 5px;
+  height: 100px;
+  width: 100px;
 }
 </style>

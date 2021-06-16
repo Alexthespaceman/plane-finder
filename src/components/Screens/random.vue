@@ -1,5 +1,5 @@
 <template>
-    <h1>I am a random screen </h1>
+  <h1>I am a random screen</h1>
 </template>
 
 <script>
