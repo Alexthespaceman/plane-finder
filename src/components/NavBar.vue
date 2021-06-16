@@ -7,10 +7,10 @@
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
-          <b-navbar-nav>
-            <b-link active-class="active" class="nav-link" v-for="routes in links" :key="routes.id" :to="routes.path">
-              Search Airlines</b-link>
-          </b-navbar-nav>
+          <nav>
+            <router-link class="nav-item" to="/Airlines"> Search Airlines</router-link>
+            <router-link class="nav-item" to="/random"> Search random</router-link>
+          </nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
@@ -38,46 +38,20 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-    <div>
-      <h1>Todays top 10 flights</h1>
-
-      <li v-for="content in contents" :key="content.id">
-        <!-- <div>{{ content.aircraft }}</div> -->
-        <div>{{ content.airline.name }}</div>
-        <div>Departed from {{ content.departure.airport }}</div>
-        <div>
-          Arriving at {{ content.arrival.airport }} at
-
-          {{ new Date(content.arrival.estimated).toString().slice(15, 21) }}
-        </div>
-        <div v-if="content.arrival.terminal === null">
-          Terminal is not yet availbale
-        </div>
-        <div v-else>Terminal {{ content.arrival.terminal }}</div>
-      </li>
-    </div>
   </div>
 </template>
 
 <script>
   import axios from "axios";
-  // import Vue from 'vue'
-  // import VueRouter from 'vue-router'
-  import Airlines from '../components/Screens/Airlines.vue'
-  // Vue.use(VueRouter)
 
+  import Airlines from '../components/Screens/Airlines.vue'
+  import LandingScreen from '../components/Screens/LandingScreen.vue'
+  import random from '../components/Screens/random.vue'
 
   export default {
     name: "Nav",
     data() {
       return {
-        links : [
-        {
-                    id: 0,
-                    name: 'Airlines',
-                    path: '/Airlines',
-                }
-        ],
         contents: null,
         form: {
           text: "",
