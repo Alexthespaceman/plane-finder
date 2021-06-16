@@ -4,14 +4,33 @@
     <div>
       <form>
         <title>Search Airlines</title>
-        <input type="text" />
+        <input v-model="form.text" type="text" name="form.text" />
         <button>Search</button>
       </form>
     </div>
+
+    <!-- <div>
+        <li class="list" v-for="content in contents" :key="content.id">
+      
+      <div>{{ content.airline.name }}</div>
+      <div>Departed from {{ content.departure.airport }}</div>
+      <div>
+        Arriving at {{ content.arrival.airport }} at
+
+        {{ new Date(content.arrival.estimated).toString().slice(15, 21) }}
+      </div>
+      <div v-if="content.arrival.terminal === null">
+        Terminal is not yet availbale
+      </div>
+      <div v-else>Terminal {{ content.arrival.terminal }}</div>
+    </li>
+    </div> -->
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Airlines",
   data() {
@@ -32,7 +51,7 @@ export default {
     console.log(this.form.text);
     axios
       .get(
-        `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
+        `http://api.aviationstack.com/v1/airlines?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&airline_name=${this.form.text}&limit=10`
       )
       .then((response) => {
         this.contents = response.data.data;
