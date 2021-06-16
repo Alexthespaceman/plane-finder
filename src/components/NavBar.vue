@@ -1,4 +1,5 @@
 <template>
+  <div>
   <div class="Nav">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <b-navbar-brand href="#">Explore</b-navbar-brand>
@@ -6,21 +7,6 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <!-- <b-nav-form>
-          <b-form-input
-            type="text"
-            v-model="form.text"
-            size="sm"
-            class="mr-sm-2"
-            placeholder="Search Flight Number"
-            :formatter="formatter"
-            id="input-formatter"
-          ></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit"
-            >Search
-          </b-button>
-        </b-nav-form> -->
-
         <b-navbar-nav>
           <b-nav-item href="#">Link</b-nav-item>
           <!-- <b-nav-item href="#" disabled>Disabled</b-nav-item> -->
@@ -52,6 +38,25 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+  <div>
+    <h1>Todays top 10 flights</h1>
+
+    <li v-for="content in contents" :key="content.id">
+      <!-- <div>{{ content.aircraft }}</div> -->
+      <div>{{ content.airline.name }}</div>
+      <div>Departed from {{ content.departure.airport }}</div>
+      <div>
+        Arriving at {{ content.arrival.airport }} at
+
+        {{ new Date(content.arrival.estimated).toString().slice(15, 21) }}
+      </div>
+      <div v-if="content.arrival.terminal === null">
+        Terminal is not yet availbale
+      </div>
+      <div v-else>Terminal {{ content.arrival.terminal }}</div>
+    </li>
+  </div>
+</div>
 </template>
 
 <script>
@@ -79,8 +84,8 @@ export default {
         `http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&flight_number=${this.form.text}`
       )
       .then((response) => {
-        this.info = response;
-        console.log(response);
+        this.contents = response.data.data;
+        // console.log(response);
       });
   },
 };
