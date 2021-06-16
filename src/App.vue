@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <Header msg="Welcome to Plane finder" />
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <router-view><LandingScreen /><Airlines /><random /></router-view>
   </div>
 </template>

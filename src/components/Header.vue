@@ -34,6 +34,11 @@ export default {
   /* border: 3px black solid; */
   /* position: relative; */
   background-color: #f4d35e;
+  height: 250px;
+  border: black 3px solid;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 h3 {

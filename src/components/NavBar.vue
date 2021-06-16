@@ -36,8 +36,8 @@
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
-      <form @submit="getData">
-        <p>Search for a Flight:</p>
+      <form class="search-flight-no" @submit="getData">
+        <p>Search Flight Number:</p>
         <input
           v-model="form.text"
           placeholder="Search flight number"
@@ -90,6 +90,22 @@ export default {
 
 <style scope>
 .Nav {
+  position: absolute;
   text-align: center;
+  top: 115px;
+  width: 100%;
+}
+
+.search-flight-no {
+  position: absolute;
+  top: -100px;
+  right: 40px;
+  width: 250px;
+  height: 150px;
+}
+
+.input {
+  border-radius: 5px;
+  margin: 3px;
 }
 </style>

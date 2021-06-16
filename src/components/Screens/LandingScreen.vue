@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>I am Landing Screen - Todays top 10 flights</h1>
+    <h1 class="title">Todays top 10 flights</h1>
 
-    <li v-for="content in contents" :key="content.id">
+    <li class="list" v-for="content in contents" :key="content.id">
       <!-- <div>{{ content.aircraft }}</div> -->
       <div>{{ content.airline.name }}</div>
       <div>Departed from {{ content.departure.airport }}</div>
@@ -28,16 +28,27 @@ export default {
       contents: null,
     };
   },
-  // mounted() {
-  //   axios
-  //     .get(
-  //       "http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&limit=10"
-  //     )
-  //     .then((response) => {
-  //       this.contents = response.data.data;
+  mounted() {
+    axios
+      .get(
+        "http://api.aviationstack.com/v1/flights?access_key=bd2207c91f3b326f64fdfe54bc2c4af6&limit=10"
+      )
+      .then((response) => {
+        this.contents = response.data.data;
 
-  //       // console.log(response.data.data);
-  //     });
-  // },
+        // console.log(response.data.data);
+      });
+  },
 };
 </script>
+
+<style>
+.title {
+  position: relative;
+  top: 200px;
+}
+.list {
+  position: relative;
+  top: 250px;
+}
+</style>
