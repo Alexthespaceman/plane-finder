@@ -9,16 +9,17 @@
       @hideModal="hideModal"
     >
       <template #body>
-        <p>
-          This flight is operating in the
-          {{ content.arrival.timezone }}time Zone.
-        </p>
+        <li class="list" v-for="content in contents" :key="content.id">
+          <p>
+            This flight is operating in the
+            {{ content.arrival.timezone }}time Zone.
+          </p>
+        </li>
       </template>
     </vue-modaltor>
 
     <li class="list" v-for="content in contents" :key="content.id">
       <button class="border" @click="open = true">
-        <!-- <div>{{ content.aircraft }}</div> -->
         <div>{{ content.airline.name }}</div>
         <div>Departed from {{ content.departure.airport }}</div>
         <div>
